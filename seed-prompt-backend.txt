@@ -1,0 +1,175 @@
+Backend Development Prompt for AI Fitness Trainer
+You are an expert Node.js and Express.js backend developer responsible for building and enhancing the AI Fitness Trainer API. The project has a robust foundation, and your goal is to continue adding features according to the established project plan.
+
+Technology Stack
+Framework: Node.js, Express.js
+
+Database: MongoDB with Mongoose
+
+Authentication: JSON Web Tokens (JWT)
+
+Real-time: Socket.IO
+
+Validation: express-validator (or similar)
+
+Package manager: npm
+
+Full Project Plan
+This is the official project roadmap. The backend work for Phases 1 through 6 is complete.
+
+🔹 Phase 1: Project Setup & Foundations (Completed)
+
+🔹 Phase 2: Authentication & User Management (Completed)
+
+🔹 Phase 3: Dashboard & User Stats (Completed)
+
+🔹 Phase 4: Exercise Library (Completed)
+
+🔹 Phase 5: Real-time Pose Detection & Feedback (Completed)
+
+🔹 Phase 6: Workout Sessions (Completed)
+
+🔹 Phase 7: Analytics & Progress Tracking (Current Task)
+
+🔹 Phase 8: Workout History & Data Management
+
+🔹 Phase 9: Demo & Tutorial Section
+
+Current Project Structure
+.
+
+├── app.js
+
+├── index.js
+
+├── package-lock.json
+
+├── package.json
+
+├── seed-prompt-backend.txt
+
+├── seed.js
+
+├── src
+
+│   ├── api
+
+│   │   ├── controllers
+
+│   │   │   ├── auth.controller.js
+
+│   │   │   ├── exercise.controller.js
+
+│   │   │   ├── user.controller.js
+
+│   │   │   └── workout.controller.js
+
+│   │   ├── middlewares
+
+│   │   │   ├── admin.middleware.js
+
+│   │   │   ├── auth.middleware.js
+
+│   │   │   ├── errorHandler.js
+
+│   │   │   └── validators.js
+
+│   │   └── routes
+
+│   │       ├── auth.routes.js
+
+│   │       ├── exercise.routes.js
+
+│   │       ├── user.routes.js
+
+│   │       └── workout.routes.js
+
+│   ├── config
+
+│   │   └── database.js
+
+│   ├── models
+
+│   │   ├── Exercise.model.js
+
+│   │   ├── User.model.js
+
+│   │   └── Workout.model.js
+
+│   ├── services
+
+│   ├── utils
+
+│   │   ├── asyncHandler.js
+
+│   │   └── responseHandler.js
+
+│   └── websocket
+
+│       ├── index.js
+
+│       └── rules
+
+│           ├── bicepCurl.js
+
+│           ├── jumpingJack.js
+
+│           ├── lunge.js
+
+│           ├── mountainClimber.js
+
+│           ├── pushup.js
+
+│           ├── shoulderPress.js
+
+│           ├── squat.js
+
+│           ├── tricepDip.js
+
+│           └── utils.js
+
+└── test_api.sh
+
+Status: Completed Work
+The backend functionality for Phases 1 through 6 is fully implemented, stable, and feature-rich. This includes user authentication, real-time pose analysis, a user stats dashboard, a full exercise library with admin controls, and structured workout session management.
+
+Next Task: Phase 7 - Analytics & Progress Tracking (Backend)
+Goal: Visualize progress in detail by creating a dedicated analytics API.
+
+Your Tasks:
+
+Create a Progress & Analytics Endpoint:
+
+Create a new controller file: apps/api/src/api/controllers/progress.controller.js.
+
+Create a new routes file: apps/api/src/api/routes/progress.routes.js.
+
+Implement a new route: GET /api/v1/progress.
+
+This endpoint must be protected by the authMiddleware.
+
+It should accept a query parameter to define the time window for the analysis, for example: ?period=weekly or ?period=monthly.
+
+Implement Analytics Logic:
+
+Inside the progress.controller.js, create a function to handle the logic for the /progress route.
+
+This function will retrieve all of the user's completed workouts from the database.
+
+Based on the period query parameter, filter these workouts to include only those from the relevant time frame (e.g., the last 7 days for "weekly", the last 30 days for "monthly").
+
+Aggregate the filtered data to calculate the key progress metrics defined in the project plan:
+
+Calories Burned Trend: Sum of caloriesBurned grouped by day or week.
+
+Reps Done (Volume Trend): Sum of reps * sets for all exercises, grouped by day or week.
+
+Best Score: Find the single exercise with the highest formScore within the period.
+
+Accuracy Trend (Form Score Trend): Calculate the average formScore across all exercises, grouped by day or week, to show improvement over time.
+
+Integrate New Route:
+
+In your main app.js file, import and mount the new progress routes under the /api/v1/progress path.
+
+Deliverable: A secure and efficient backend endpoint (/api/v1/progress) that performs time-based aggregations on workout data. The response should be structured to make it easy for the frontend to build interactive charts and visualizations for the analytics dashboard.
